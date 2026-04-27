@@ -77,10 +77,10 @@ Stack::Stack(const ValueType* valueArray, const size_t arraySize, StackContainer
 Stack::Stack(const Stack& copyStack) : _containerType(copyStack._containerType) {
     switch (_containerType) {
         case StackContainer::Vector:
-            _pimpl = new VectorStack(*static_cast<VectorStack*>(copyStack._pimpl));
+            _pimpl = new VectorStack(*dynamic_cast<VectorStack*>(copyStack._pimpl));
             break;
         case StackContainer::List:
-            _pimpl = new ListStack(*static_cast<ListStack*>(copyStack._pimpl));
+            _pimpl = new ListStack(*dynamic_cast<ListStack*>(copyStack._pimpl));
             break;
         default:
             throw std::invalid_argument("Unknown container type");
@@ -93,10 +93,10 @@ Stack& Stack::operator=(const Stack& copyStack) {
     _containerType = copyStack._containerType;
     switch (_containerType) {
         case StackContainer::Vector:
-            _pimpl = new VectorStack(*static_cast<VectorStack*>(copyStack._pimpl));
+            _pimpl = new VectorStack(*dynamic_cast<VectorStack*>(copyStack._pimpl));
             break;
         case StackContainer::List:
-            _pimpl = new ListStack(*static_cast<ListStack*>(copyStack._pimpl));
+            _pimpl = new ListStack(*dynamic_cast<ListStack*>(copyStack._pimpl));
             break;
         default:
             throw std::invalid_argument("Unknown container type");
