@@ -1,50 +1,48 @@
 #include "StackImplementation.h"
 #include "Stack.h"
 #include "Vector.h"
-#include <list>
+#include "List.h"
 #include <stdexcept>
-
 class VectorStack : public IStackImplementation {
-    std::vector<ValueType> _data;
+    Vector _data; 
 public:
     void push(const ValueType& value) override {
-        _data.push_back(value);
+        _data.pushBack(value); 
     }
     
     void pop() override {
-        if (_data.empty()) throw std::underflow_error("Stack is empty");
-        _data.pop_back();
+        if (_data.size() == 0) throw std::underflow_error("Stack is empty");
+        _data.popBack();  
     }
     
     const ValueType& top() const override {
-        if (_data.empty()) throw std::underflow_error("Stack is empty");
-        return _data.back();
+        if (_data.size() == 0) throw std::underflow_error("Stack is empty");
+        return _data[_data.size() - 1];
     }
     
     bool isEmpty() const override {
-        return _data.empty();
+        return _data.size() == 0;
     }
     
     size_t size() const override {
         return _data.size();
     }
 };
-
 class ListStack : public IStackImplementation {
-    std::list<ValueType> _data;
+    DFlist _data;  
 public:
     void push(const ValueType& value) override {
-        _data.push_back(value);
+        _data.push_back(value);  
     }
     
     void pop() override {
         if (_data.empty()) throw std::underflow_error("Stack is empty");
-        _data.pop_back();
+        _data.pop_back();  
     }
     
     const ValueType& top() const override {
         if (_data.empty()) throw std::underflow_error("Stack is empty");
-        return _data.back();
+        return _data.back().val;  
     }
     
     bool isEmpty() const override {

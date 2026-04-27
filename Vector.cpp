@@ -39,7 +39,7 @@ Vector& Vector::operator=(const Vector& other)
             }
         } else {
             _data = nullptr;
-        }
+     
         }
     }
     return *this;
