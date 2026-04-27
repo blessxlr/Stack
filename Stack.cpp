@@ -1,5 +1,6 @@
+#include "StackImplementation.h"
 #include "Stack.h"
-#include <vector>
+#include "Vector.h"
 #include <list>
 #include <stdexcept>
 

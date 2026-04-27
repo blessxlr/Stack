@@ -1,5 +1,5 @@
 #pragma once
-
+#include <cstddef>
 using ValueType = double;
 
 // интерфейс для конкретных реализаций контейнера для стека
